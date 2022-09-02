@@ -4,9 +4,7 @@ import { Todo} from "../models/Todo";
 
 
 const initialState: Todo[] = [
-    {title:"Title demo 1"},
-    {title:"Title demo 2"},
-    {title:"Title demo 3"}
+   {title:""}
 ];
 
 
@@ -14,6 +12,10 @@ export function TodoReducer(state=initialState, action :ActionParent)
 {
     switch(action.type)
     {
+        case TodoActionType.Add:
+            return[...state,action.payload]
+        case TodoActionType.Remove:
+            return[...state.splice(action.payload,1)]
         default : return state;
     }
 }
